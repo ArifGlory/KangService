@@ -1,0 +1,2 @@
+rootProject.name='Kang Service'
+include ':app'

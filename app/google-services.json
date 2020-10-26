@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "821721489136",
+    "firebase_url": "https://kangservice-4ab8e.firebaseio.com",
+    "project_id": "kangservice-4ab8e",
+    "storage_bucket": "kangservice-4ab8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821721489136:android:5e5b15817e184e9b976c35",
+        "android_client_info": {
+          "package_name": "com.tapisdev.kangservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821721489136-vl8mvomgl94769j1751gbavpdk33m07u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tapisdev.kangservice",
+            "certificate_hash": "10a6740e6a410954f4d3983063fd02a71175ae62"
+          }
+        },
+        {
+          "client_id": "821721489136-jssdl38hhblc781h3qc1qh8ej0s3u3g3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlj4-ZeWJWd9Gx76OsPBVV2yG9ptUdREM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "821721489136-jssdl38hhblc781h3qc1qh8ej0s3u3g3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
