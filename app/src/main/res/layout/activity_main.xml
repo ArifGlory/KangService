@@ -157,9 +157,9 @@
 
                         </LinearLayout>
 
-                    </androidx.cardview.widget.CardView>>
+                    </androidx.cardview.widget.CardView>
 
-                    <android.support.v7.widget.CardView
+                    <androidx.cardview.widget.CardView
                         android:id="@+id/cvForgot"
                         android:layout_width="match_parent"
                         android:layout_height="320dp"
@@ -181,7 +181,7 @@
                             android:orientation="vertical">
 
 
-                            <android.support.design.widget.TextInputLayout
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
@@ -201,12 +201,12 @@
                                     android:textColorHint="#454545"
                                     android:textColorLink="#454545"
                                     android:textSize="18sp" />
-                            </android.support.design.widget.TextInputLayout>>
+                            </com.google.android.material.textfield.TextInputLayout>>
 
 
                         </LinearLayout>
 
-                    </android.support.v7.widget.CardView>>
+                    </androidx.cardview.widget.CardView>>
 
                 </RelativeLayout>
 

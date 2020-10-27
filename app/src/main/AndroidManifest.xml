@@ -18,8 +18,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.RegisterActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.admin.ProfilAdminActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.MaintenanceActivity"
+            android:label="Maintenance" />
+        <activity android:name=".activity.SplashActivity" />
+        <activity
+            android:name=".activity.admin.HomeAdminActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:label="Daftar Akun" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

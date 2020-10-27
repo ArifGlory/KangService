@@ -47,9 +47,19 @@
                         app:srcCompat="@drawable/avatar"
                         android:layout_gravity="center_horizontal" />
 
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:popupBackground="@color/white"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:entries="@array/listJenisUser"
+                        android:background="@drawable/et_background1"
+                        android:id="@+id/spJenisUser"></Spinner>
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:textColorHint="@color/black2"
                         android:theme="@style/myEditTextStyleBlack"
                         android:layout_height="wrap_content">
@@ -107,27 +117,6 @@
                             android:drawableRight="@drawable/ic_smartphone_black_24dp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:textColorHint="@color/black2"
-                        android:theme="@style/myEditTextStyleBlack"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Alamat"
-                            android:id="@+id/etAlamat"
-                            android:inputType="textMultiLine"
-                            android:textColorHint="@color/black2"
-                            android:textColor="@color/black2"
-                            android:drawableEnd="@drawable/ic_place_black_24dp"
-                            android:drawableRight="@drawable/ic_place_black_24dp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
@@ -189,10 +178,10 @@
                         android:layout_marginStart="10dp"
                         android:text="Kembali ke Login"
                         android:textAlignment="center"
-                        android:id="@+id/tvDaftar"
-                        android:onClick="keLogin"
+                        android:id="@+id/tvLogin"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:layout_marginLeft="10dp" />
 
 
                 </LinearLayout>

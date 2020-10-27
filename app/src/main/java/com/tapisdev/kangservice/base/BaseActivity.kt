@@ -23,6 +23,9 @@ open class BaseActivity : AppCompatActivity() {
 
     val myDB = FirebaseFirestore.getInstance()
     val userRef = myDB.collection("users")
+    val settingsRef = myDB.collection("settings")
+    val pesanananRef = myDB.collection("pesanan")
+    val detailpesananRef = myDB.collection("detail_pesanan")
 
     override fun setContentView(view: View?) {
         super.setContentView(view)
