@@ -7,6 +7,6 @@ class SharedVariable {
 
     companion object {
         var totalKeranjang : Int = 0
-        var lokasiPenyedia  = LatLng(0.0,0.0)
+        var lokasiToko  = LatLng(0.0,0.0)
     }
 }

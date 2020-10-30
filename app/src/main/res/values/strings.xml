@@ -6,4 +6,5 @@
         <item>Admin Catering/Tenda</item>
         <item>Pengguna</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>

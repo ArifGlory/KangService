@@ -3,6 +3,7 @@ package com.tapisdev.kangservice.activity.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.tapisdev.cateringtenda.base.BaseActivity
 import com.tapisdev.kangservice.MainActivity
@@ -38,5 +39,10 @@ class HomeAdminActivity : BaseActivity() {
                 .load(mUserPref.getFoto())
                 .into(ivProfilToko)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateUI()
     }
 }
