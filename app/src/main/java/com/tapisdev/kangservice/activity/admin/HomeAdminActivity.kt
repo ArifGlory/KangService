@@ -22,6 +22,10 @@ class HomeAdminActivity : BaseActivity() {
             val i = Intent(this, ProfilAdminActivity::class.java)
             startActivity(i)
         }
+        rlSparepart.setOnClickListener {
+            val i = Intent(this, ListSparepartActivity::class.java)
+            startActivity(i)
+        }
 
         updateUI()
     }

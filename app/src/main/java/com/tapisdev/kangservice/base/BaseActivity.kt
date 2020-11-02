@@ -23,6 +23,7 @@ open class BaseActivity : AppCompatActivity() {
 
     val myDB = FirebaseFirestore.getInstance()
     val userRef = myDB.collection("users")
+    val sparepartRef = myDB.collection("sparepart")
     val settingsRef = myDB.collection("settings")
     val pesanananRef = myDB.collection("pesanan")
     val detailpesananRef = myDB.collection("detail_pesanan")
