@@ -22,10 +22,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.admin.AddLayananActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activity.admin.ListLayananActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.admin.DetailLayananActivity"></activity>
+        <activity
+            android:name=".activity.admin.AddLayananActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.admin.ListLayananActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.admin.DetailSparepartActivity"
             android:theme="@style/AppTheme.NoActionBar" />

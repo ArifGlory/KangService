@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tapisdev.kangservice.R
+import com.tapisdev.kangservice.activity.admin.DetailLayananActivity
 import com.tapisdev.kangservice.activity.admin.DetailSparepartActivity
 import com.tapisdev.kangservice.model.Layanan
 import com.tapisdev.kangservice.model.Sparepart
@@ -36,9 +37,9 @@ class AdapterLayanan(private val list:ArrayList<Layanan>) : RecyclerView.Adapter
 
         holder.view.lineLayanan.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            /*val i = Intent(holder.view.lineSparepart.context, DetailSparepartActivity::class.java)
+            val i = Intent(holder.view.lineSparepart.context, DetailLayananActivity::class.java)
             i.putExtra("sparepart",list.get(position) as Serializable)
-            holder.view.lineSparepart.context.startActivity(i)*/
+            holder.view.lineSparepart.context.startActivity(i)
         }
 
     }
