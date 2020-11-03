@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tapisdev.kangservice.R
+import com.tapisdev.kangservice.activity.admin.DetailSparepartActivity
 import com.tapisdev.kangservice.model.Sparepart
 import kotlinx.android.synthetic.main.item_sparepart.view.*
 import java.io.Serializable
@@ -35,9 +36,9 @@ class AdapterSparepart(private val list:ArrayList<Sparepart>) : RecyclerView.Ada
 
         holder.view.lineSparepart.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            /*val i = Intent(holder.view.lineSparepart.context,DetailSparepartActivity::class.java)
-            i.putExtra("Sparepart",list.get(position) as Serializable)
-            holder.view.lineSparepart.context.startActivity(i)*/
+            val i = Intent(holder.view.lineSparepart.context, DetailSparepartActivity::class.java)
+            i.putExtra("sparepart",list.get(position) as Serializable)
+            holder.view.lineSparepart.context.startActivity(i)
         }
 
     }
