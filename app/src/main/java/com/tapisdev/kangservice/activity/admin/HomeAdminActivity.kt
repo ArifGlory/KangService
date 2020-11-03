@@ -26,6 +26,10 @@ class HomeAdminActivity : BaseActivity() {
             val i = Intent(this, ListSparepartActivity::class.java)
             startActivity(i)
         }
+        rlLayanan.setOnClickListener {
+            val i = Intent(this, ListLayananActivity::class.java)
+            startActivity(i)
+        }
 
         updateUI()
     }

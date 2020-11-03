@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="match_parent"
+    android:background="@color/colorBg">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:id="@+id/rlRegistration"
+        android:background="@drawable/bg_top_shap_10">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:text="Tambah Layanan Kendala"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            tools:ignore="MissingPrefix" />
+
+
+
+        <EditText
+            android:id="@+id/edNamaLayanan"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@id/tvTitle"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/bg_onlycorner_gary"
+            android:hint="Nama Layanan"
+            android:inputType="textPersonName"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:textSize="14sp" />
+
+
+        <EditText
+            android:id="@+id/edHargaLayanan"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@id/edFullName"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/bg_onlycorner_gary"
+            android:hint="Harga"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edEstimasi"
+                android:layout_toLeftOf="@+id/tvTitleEstimasi"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10sp"
+                android:background="@drawable/bg_onlycorner_gary"
+                android:hint="Estimasi Selesai"
+                android:inputType="number"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:textSize="14sp" />
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tvTitleEstimasi"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="30dp"
+                android:layout_height="wrap_content"
+                android:text="Hari"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                tools:ignore="MissingPrefix" />
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/edRincian"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@id/edFullName"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10sp"
+            android:background="@drawable/bg_onlycorner_gary"
+            android:hint="Deskripsikan Rincian Layanan"
+            android:inputType="textMultiLine"
+            android:imeOptions="actionNext"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvAddLayanan"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edDeskripsi"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10sp"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/bg_onlycorner_gary"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:padding="10sp"
+            android:text="Tambahkan"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            tools:ignore="MissingPrefix" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_below="@id/tvAdd">
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
