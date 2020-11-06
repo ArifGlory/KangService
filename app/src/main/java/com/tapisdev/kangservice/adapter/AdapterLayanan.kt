@@ -37,9 +37,9 @@ class AdapterLayanan(private val list:ArrayList<Layanan>) : RecyclerView.Adapter
 
         holder.view.lineLayanan.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            val i = Intent(holder.view.lineSparepart.context, DetailLayananActivity::class.java)
-            i.putExtra("sparepart",list.get(position) as Serializable)
-            holder.view.lineSparepart.context.startActivity(i)
+            val i = Intent(holder.view.lineLayanan.context, DetailLayananActivity::class.java)
+            i.putExtra("layanan",list.get(position) as Serializable)
+            holder.view.lineLayanan.context.startActivity(i)
         }
 
     }
