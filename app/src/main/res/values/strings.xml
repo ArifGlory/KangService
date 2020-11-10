@@ -3,7 +3,7 @@
     <string name="slogan">Cara mudah service handphone</string>
     <string-array name="listJenisUser">
         <item>Pilih Jenis Pengguna</item>
-        <item>Admin Catering/Tenda</item>
+        <item>Admin Toko Service</item>
         <item>Pengguna</item>
     </string-array>
     <string name="title_activity_maps">Map</string>

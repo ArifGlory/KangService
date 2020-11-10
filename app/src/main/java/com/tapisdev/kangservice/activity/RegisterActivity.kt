@@ -43,7 +43,7 @@ class RegisterActivity : BaseActivity() {
                 var selected = parent?.getItemAtPosition(position).toString()
                 if (selected.equals("Pilih Jenis Pengguna")){
                     selectedJenisUser = "none"
-                }else if (selected.equals("Admin Catering/Tenda")){
+                }else if (selected.equals("Admin Toko Service")){
                     selectedJenisUser = "admin"
                 }else if (selected.equals("Pengguna")){
                     selectedJenisUser = "pengguna"

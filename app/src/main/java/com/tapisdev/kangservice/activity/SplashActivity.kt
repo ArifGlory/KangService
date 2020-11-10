@@ -8,6 +8,7 @@ import com.tapisdev.cateringtenda.base.BaseActivity
 import com.tapisdev.kangservice.MainActivity
 import com.tapisdev.kangservice.R
 import com.tapisdev.kangservice.activity.admin.HomeAdminActivity
+import com.tapisdev.kangservice.activity.pengguna.HomePenggunaActivity
 import com.tapisdev.kangservice.model.UserPreference
 
 class SplashActivity : BaseActivity() {
@@ -41,9 +42,8 @@ class SplashActivity : BaseActivity() {
                     val i = Intent(applicationContext,HomeAdminActivity::class.java)
                     startActivity(i)
                 }else if(mUserPref.getJenisUser().equals("pengguna")){
-                   /* val i = Intent(applicationContext,HomeUserActivity::class.java)
-                    startActivity(i)*/
-                    showInfoMessage("modul pengguna masih dalam pengerjaan")
+                    val i = Intent(applicationContext,HomePenggunaActivity::class.java)
+                    startActivity(i)
                 }else{
                     val i = Intent(applicationContext,MainActivity::class.java)
                     startActivity(i)
