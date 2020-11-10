@@ -22,8 +22,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.pengguna.ListTokoActivity"
+        <activity android:name=".activity.pengguna.DetailTokoActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.pengguna.ListTokoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.pengguna.HomePenggunaActivity" />
         <activity android:name=".activity.admin.DetailLayananActivity" />
         <activity

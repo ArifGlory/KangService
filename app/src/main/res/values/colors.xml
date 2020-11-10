@@ -37,6 +37,8 @@
     <color name="black2">#4c4c4c</color>
 
     <color name="color_white">#FFF</color>
+    <color name="trans_black">#3C000000</color>
+    <color name="dark_gary">#B1B1B1</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>

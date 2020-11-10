@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tapisdev.kangservice.R
+import com.tapisdev.kangservice.activity.pengguna.DetailTokoActivity
 import com.tapisdev.kangservice.model.UserModel
 import kotlinx.android.synthetic.main.item_toko.view.*
 import java.io.Serializable
@@ -35,9 +36,9 @@ class AdapterToko(private val list:ArrayList<UserModel>) : RecyclerView.Adapter<
 
         holder.view.lineToko.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            /*val i = Intent(holder.view.lineToko.context, DetailUserModelActivity::class.java)
-            i.putExtra("UserModel",list.get(position) as Serializable)
-            holder.view.lineToko.context.startActivity(i)*/
+            val i = Intent(holder.view.lineToko.context, DetailTokoActivity::class.java)
+            i.putExtra("toko",list.get(position) as Serializable)
+            holder.view.lineToko.context.startActivity(i)
         }
 
     }
