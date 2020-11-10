@@ -64,7 +64,7 @@
                     android:textSize="14sp"
                     android:layout_margin="5dp"
                     android:textColor="@color/black2"
-                    android:id="@+id/tvName"
+                    android:id="@+id/tvNamaToko"
                     android:layout_marginRight="5dp"
                     android:textStyle="bold"
                     tools:ignore="MissingPrefix" />
@@ -114,13 +114,24 @@
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Sparepart di toko ini"
+                    android:textSize="12sp"
+                    android:layout_margin="5dp"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    tools:ignore="MissingPrefix" />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp">
 
                     <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/animation_view"
+                        android:id="@+id/animation_view_toko"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:layout_marginTop="40dp"

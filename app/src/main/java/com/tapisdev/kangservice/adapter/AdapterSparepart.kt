@@ -14,8 +14,13 @@ import com.bumptech.glide.Glide
 import com.tapisdev.kangservice.R
 import com.tapisdev.kangservice.activity.admin.DetailSparepartActivity
 import com.tapisdev.kangservice.model.Sparepart
+import com.tapisdev.kangservice.model.UserPreference
 import kotlinx.android.synthetic.main.item_sparepart.view.*
 import java.io.Serializable
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AdapterSparepart(private val list:ArrayList<Sparepart>) : RecyclerView.Adapter<AdapterSparepart.Holder>(){
 
@@ -24,11 +29,16 @@ class AdapterSparepart(private val list:ArrayList<Sparepart>) : RecyclerView.Ada
     }
 
     override fun getItemCount(): Int = list?.size
+    lateinit var mUserPref : UserPreference
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
+        val nf = NumberFormat.getNumberInstance(Locale.GERMAN)
+        val df = nf as DecimalFormat
+
         holder.view.tvNamaSparepart.text = list?.get(position)?.nama
-        holder.view.tvHarga.text ="Rp. " +list?.get(position)?.harga
+        holder.view.tvHarga.text ="Rp. " +df.format(list?.get(position)?.harga)
+        mUserPref = UserPreference(holder.view.tvHarga.context)
 
         Glide.with(holder.view.ivSparepart.context)
             .load(list?.get(position)?.foto)
@@ -36,9 +46,14 @@ class AdapterSparepart(private val list:ArrayList<Sparepart>) : RecyclerView.Ada
 
         holder.view.lineSparepart.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            val i = Intent(holder.view.lineSparepart.context, DetailSparepartActivity::class.java)
-            i.putExtra("sparepart",list.get(position) as Serializable)
-            holder.view.lineSparepart.context.startActivity(i)
+            if (mUserPref.getJenisUser().equals("admin")){
+                val i = Intent(holder.view.lineSparepart.context, DetailSparepartActivity::class.java)
+                i.putExtra("sparepart",list.get(position) as Serializable)
+                holder.view.lineSparepart.context.startActivity(i)
+            }else{
+
+            }
+
         }
 
     }
