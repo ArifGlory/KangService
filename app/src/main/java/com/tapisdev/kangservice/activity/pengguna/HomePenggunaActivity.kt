@@ -29,6 +29,10 @@ class HomePenggunaActivity : BaseActivity() {
             val i = Intent(this, CartSparepartActivity::class.java)
             startActivity(i)
         }
+        rlTransaksi.setOnClickListener {
+            val i = Intent(this, JenisTransaksiActivity::class.java)
+            startActivity(i)
+        }
 
         updateUI()
     }
