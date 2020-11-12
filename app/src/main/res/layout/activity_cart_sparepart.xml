@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@drawable/bg_orangecornertrans_10"
+        android:id="@+id/rlToolBar">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/trans_black" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_orangecornertrans_10"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_back"
+                android:tint="@color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_centerInParent="true"
+                android:textStyle="bold"
+                android:text="Keranjang Sparepart"
+                tools:ignore="MissingPrefix" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvKeranjang"
+        android:layout_below="@+id/rlToolBar"
+        android:layout_marginTop="10dp"
+        android:layout_above="@+id/rlBottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        android:layout_margin="15dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        app:lottie_rawRes="@raw/water_loading"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rlBottom"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:padding="10dp"
+            android:id="@+id/tvPriceTotal"
+            android:layout_above="@+id/tvGoToMakeOrder"
+            android:text="Total : Rp. 0"
+            android:textColor="@color/black2"
+            android:textSize="14sp"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:id="@+id/tvGoToMakeOrder"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_editfield"
+            android:backgroundTint="@color/colorPrimary"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:text="Lanjut ke Buat Pesanan"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:ignore="MissingPrefix" />
+
+    </LinearLayout>
+
+</RelativeLayout>

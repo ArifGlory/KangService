@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.tapisdev.cateringtenda.base.BaseActivity
 import com.tapisdev.kangservice.R
+import com.tapisdev.kangservice.model.SharedVariable
 import com.tapisdev.kangservice.model.UserPreference
 import kotlinx.android.synthetic.main.activity_home_pengguna.*
 
@@ -24,6 +25,10 @@ class HomePenggunaActivity : BaseActivity() {
             val i = Intent(this, ProfilUserActivity::class.java)
             startActivity(i)
         }
+        rlKeranjang.setOnClickListener {
+            val i = Intent(this, CartSparepartActivity::class.java)
+            startActivity(i)
+        }
 
         updateUI()
     }
@@ -37,6 +42,7 @@ class HomePenggunaActivity : BaseActivity() {
                 .load(mUserPref.getFoto())
                 .into(ivProfilUser)
         }
+        tvStatusKeranjang.setText("Total di Keranjang : "+SharedVariable.listCart.size)
     }
 
     override fun onResume() {

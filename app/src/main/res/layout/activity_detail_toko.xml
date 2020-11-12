@@ -80,20 +80,45 @@
                     android:textStyle="bold"
                     tools:ignore="MissingPrefix" />
 
-                <TextView
-                    android:id="@+id/tvKeLayanan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:padding="3dp"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center_horizontal"
-                    android:background="@color/colorPrimary"
-                    android:text="Lihat Layanan Service"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    tools:ignore="MissingPrefix" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvKeLayanan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:padding="3dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="15dp"
+                        android:gravity="center_horizontal"
+                        android:background="@color/colorPrimary"
+                        android:text="Lihat Layanan Service"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        tools:ignore="MissingPrefix" />
+
+                    <TextView
+                        android:id="@+id/tvHubungi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:padding="3dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_horizontal"
+                        android:background="@color/green_500"
+                        android:text="Hubungi Toko (WA)"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        tools:ignore="MissingPrefix" />
+
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
