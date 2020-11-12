@@ -41,6 +41,11 @@ class DetailTokoActivity : BaseActivity() {
         ivBack.setOnClickListener {
             onBackPressed()
         }
+        tvKeLayanan.setOnClickListener {
+            val i = Intent(this,ListLayananUserActivity::class.java)
+            i.putExtra("idToko",toko.uId)
+            startActivity(i)
+        }
 
 
         updateUI()
