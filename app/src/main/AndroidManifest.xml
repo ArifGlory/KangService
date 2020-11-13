@@ -22,10 +22,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.pengguna.TransaksiSparepartActivity"
+        <activity android:name=".activity.admin.DetailTransaksiSparepartAdminActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activity.pengguna.JenisTransaksiActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.admin.TransaksiSparepartAdminActivity"
+            android:label="Pemesanan Sparepart" />
+        <activity
+            android:name=".activity.pengguna.BuktiBayarActivity"
+            android:label="Bukti Bayar" />
+        <activity
+            android:name=".activity.pengguna.DetailTransaksiSparepartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.pengguna.TransaksiSparepartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.pengguna.JenisTransaksiActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.pengguna.KonfirmasiPesanActivity"
             android:theme="@style/AppTheme.NoActionBar" />

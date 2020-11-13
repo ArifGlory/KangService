@@ -7,4 +7,12 @@
         <item>Pengguna</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string-array name="listStatusPesanan">
+        <item>Pilih Status Pesanan</item>
+        <item>menunggu konfirmasi</item>
+        <item>pesanan diproses</item>
+        <item>sedang dikirim ke pemesan</item>
+        <item>pesanan selesai</item>
+        <item>pesanan ditolak</item>
+    </string-array>
 </resources>

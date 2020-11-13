@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.tapisdev.cateringtenda.base.BaseActivity
 import com.tapisdev.kangservice.MainActivity
 import com.tapisdev.kangservice.R
+import com.tapisdev.kangservice.activity.pengguna.JenisTransaksiActivity
 import com.tapisdev.kangservice.model.UserPreference
 import kotlinx.android.synthetic.main.activity_home_admin.*
 
@@ -28,6 +29,10 @@ class HomeAdminActivity : BaseActivity() {
         }
         rlLayanan.setOnClickListener {
             val i = Intent(this, ListLayananActivity::class.java)
+            startActivity(i)
+        }
+        rlTransaksi.setOnClickListener {
+            val i = Intent(this, JenisTransaksiActivity::class.java)
             startActivity(i)
         }
 

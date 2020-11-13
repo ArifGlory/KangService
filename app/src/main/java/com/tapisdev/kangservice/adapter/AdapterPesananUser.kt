@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.tapisdev.kangservice.R
+import com.tapisdev.kangservice.activity.admin.DetailTransaksiSparepartAdminActivity
+import com.tapisdev.kangservice.activity.pengguna.DetailTransaksiSparepartActivity
 import com.tapisdev.kangservice.model.Pesanan
 import com.tapisdev.kangservice.model.UserPreference
 import kotlinx.android.synthetic.main.item_pesanan_user.view.*
@@ -39,13 +41,13 @@ class AdapterPesananUser(private val list:ArrayList<Pesanan>) : RecyclerView.Ada
             Log.d("adapterIsi",""+list.get(position).toString())
 
             if (mUserPref.getJenisUser().equals("admin")){
-                /*val i = Intent(holder.view.linePesanan.context, DetailPesananAdminActivity::class.java)
+                val i = Intent(holder.view.linePesanan.context, DetailTransaksiSparepartAdminActivity::class.java)
                 i.putExtra("pesanan",list.get(position) as Serializable)
-                holder.view.linePesanan.context.startActivity(i)*/
+                holder.view.linePesanan.context.startActivity(i)
             }else{
-                /*val i = Intent(holder.view.linePesanan.context, DetailPesananActivity::class.java)
+                val i = Intent(holder.view.linePesanan.context, DetailTransaksiSparepartActivity::class.java)
                 i.putExtra("pesanan",list.get(position) as Serializable)
-                holder.view.linePesanan.context.startActivity(i)*/
+                holder.view.linePesanan.context.startActivity(i)
             }
 
 

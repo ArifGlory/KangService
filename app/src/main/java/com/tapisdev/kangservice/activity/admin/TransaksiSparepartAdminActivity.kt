@@ -1,4 +1,4 @@
-package com.tapisdev.kangservice.activity.pengguna
+package com.tapisdev.kangservice.activity.admin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,29 +10,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tapisdev.PesananPesanan.adapter.AdapterPesananUser
 import com.tapisdev.cateringtenda.base.BaseActivity
 import com.tapisdev.kangservice.R
-import com.tapisdev.kangservice.model.Layanan
 import com.tapisdev.kangservice.model.Pesanan
-import kotlinx.android.synthetic.main.activity_list_layanan_user.*
 import kotlinx.android.synthetic.main.activity_transaksi_sparepart.*
+import kotlinx.android.synthetic.main.activity_transaksi_sparepart_admin.*
 
-class TransaksiSparepartActivity : BaseActivity() {
+class TransaksiSparepartAdminActivity : BaseActivity() {
 
     lateinit var adapter: AdapterPesananUser
 
     var TAG_GET = "getTransaksi"
     var listPesanan = ArrayList<Pesanan>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_transaksi_sparepart)
+        setContentView(R.layout.activity_transaksi_sparepart_admin)
 
         adapter = AdapterPesananUser(listPesanan)
-        rvPesananUser.setHasFixedSize(true)
-        rvPesananUser.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
-        rvPesananUser.adapter = adapter
+        rvPesananAdmin.setHasFixedSize(true)
+        rvPesananAdmin.layoutManager = LinearLayoutManager(this) as RecyclerView.LayoutManager?
+        rvPesananAdmin.adapter = adapter
 
-        edSearchPesananUser.doOnTextChanged { text, start, before, count ->
+        edSearchPesananAdmin.doOnTextChanged { text, start, before, count ->
             var query = text.toString().toLowerCase().trim()
             var listSearchPesanan = ArrayList<Pesanan>()
 
@@ -48,12 +46,11 @@ class TransaksiSparepartActivity : BaseActivity() {
             }
 
             adapter = AdapterPesananUser(listSearchPesanan)
-            rvPesananUser.layoutManager = LinearLayoutManager(this)
-            rvPesananUser.adapter = adapter
+            rvPesananAdmin.layoutManager = LinearLayoutManager(this)
+            rvPesananAdmin.adapter = adapter
             adapter.notifyDataSetChanged()
         }
-
-
+        
         getDataMyPesanan()
     }
 
@@ -65,16 +62,16 @@ class TransaksiSparepartActivity : BaseActivity() {
                 //Log.d(TAG_GET_Sparepart, "Datanya : "+document.data)
                 var pesanan : Pesanan = document.toObject(Pesanan::class.java)
                 pesanan.pesananId = document.id
-                if (pesanan.idUser.equals(auth.currentUser?.uid)){
+                if (pesanan.idAdmin.equals(auth.currentUser?.uid)){
                     listPesanan.add(pesanan)
                 }
             }
             if (listPesanan.size == 0){
-                animation_view_pesanan.setAnimation(R.raw.empty_box)
-                animation_view_pesanan.playAnimation()
-                animation_view_pesanan.loop(false)
+                animation_view_admin.setAnimation(R.raw.empty_box)
+                animation_view_admin.playAnimation()
+                animation_view_admin.loop(false)
             }else{
-                animation_view_pesanan.visibility = View.INVISIBLE
+                animation_view_admin.visibility = View.INVISIBLE
             }
             adapter.notifyDataSetChanged()
 
