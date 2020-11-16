@@ -22,8 +22,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.admin.DetailTransaksiSparepartAdminActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.pengguna.PesanlLayananPerbaikanActivity"
+            android:label="Pesan Layanan Perbaikan"></activity>
+        <activity
+            android:name=".activity.admin.DetailTransaksiSparepartAdminActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.admin.TransaksiSparepartAdminActivity"
             android:label="Pemesanan Sparepart" />

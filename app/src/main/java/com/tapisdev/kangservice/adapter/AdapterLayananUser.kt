@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.tapisdev.kangservice.R
 import com.tapisdev.kangservice.activity.admin.DetailLayananActivity
 import com.tapisdev.kangservice.activity.admin.DetailSparepartActivity
+import com.tapisdev.kangservice.activity.pengguna.PesanlLayananPerbaikanActivity
 import com.tapisdev.kangservice.model.Layanan
 import com.tapisdev.kangservice.model.Sparepart
 import com.tapisdev.kangservice.model.UserPreference
@@ -52,8 +53,9 @@ class AdapterLayananUser(private val list:ArrayList<Layanan>) : RecyclerView.Ada
 
         holder.view.lineLayanan.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-
-
+            val i = Intent(holder.view.lineLayanan.context, PesanlLayananPerbaikanActivity::class.java)
+            i.putExtra("layanan",list.get(position) as Serializable)
+            holder.view.lineLayanan.context.startActivity(i)
         }
 
     }
