@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_below="@+id/ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:textStyle="bold"
+        android:text="Permintaan Perbaikan"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        tools:ignore="MissingPrefix" />
+
+    <EditText
+        android:id="@+id/edSearchPerbaikan"
+        android:layout_below="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:background="@drawable/bg_corner_white_10"
+        android:hint="Cari layanan"
+        android:inputType="text"
+        android:imeOptions="actionGo"
+        android:paddingLeft="10sp"
+        android:maxLines="1"
+        android:paddingRight="10sp"
+        android:textSize="14sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPerbaikan"
+        android:layout_below="@+id/edSearchPerbaikan"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view_perbaikan"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        android:layout_margin="15dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        app:lottie_rawRes="@raw/water_loading"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
+
+</RelativeLayout>

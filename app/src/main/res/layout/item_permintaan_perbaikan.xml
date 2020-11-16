@@ -22,7 +22,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lineLayanan"
+            android:id="@+id/linePerbaikan"
             android:padding="5dp">
 
             <LinearLayout
@@ -56,7 +56,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_marginEnd="10dp"
                         android:ellipsize="end"
-                        android:text="harga"
+                        android:text="merk hp"
                         android:textColor="@color/black2"
                         android:textSize="15sp" />
 
@@ -72,7 +72,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:ellipsize="end"
-                    android:text="rincian"
+                    android:text="tanggal"
                     android:textColor="@color/black2"
                     android:textSize="11sp" />
 

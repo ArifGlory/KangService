@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.tapisdev.cateringtenda.base.BaseActivity
 import com.tapisdev.kangservice.R
+import com.tapisdev.kangservice.activity.admin.TransaksiPerbaikanAdminActivity
 import com.tapisdev.kangservice.activity.admin.TransaksiSparepartAdminActivity
 import com.tapisdev.kangservice.model.UserPreference
 import kotlinx.android.synthetic.main.activity_jenis_transaksi.*
@@ -30,6 +31,12 @@ class JenisTransaksiActivity : BaseActivity() {
 
         }
         tvGoToTransService.setOnClickListener {
+            if (mUserPref.getJenisUser().equals("admin")){
+                val i = Intent(this,TransaksiPerbaikanAdminActivity::class.java)
+                startActivity(i)
+            }else{
+
+            }
 
         }
     }
