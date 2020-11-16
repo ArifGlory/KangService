@@ -35,7 +35,8 @@ class JenisTransaksiActivity : BaseActivity() {
                 val i = Intent(this,TransaksiPerbaikanAdminActivity::class.java)
                 startActivity(i)
             }else{
-
+                val i = Intent(this,TransaksiPerbaikanActivity::class.java)
+                startActivity(i)
             }
 
         }

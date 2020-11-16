@@ -22,8 +22,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".activity.admin.DetailPerbaikanActivity"
+        <activity android:name=".activity.pengguna.TransaksiPerbaikanActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.pengguna.DetailPerbaikanUserActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.admin.DetailPerbaikanActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.admin.TransaksiPerbaikanAdminActivity"
             android:theme="@style/AppTheme.NoActionBar" />

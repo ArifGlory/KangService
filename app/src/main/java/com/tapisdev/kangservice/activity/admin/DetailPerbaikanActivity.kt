@@ -1,15 +1,27 @@
 package com.tapisdev.kangservice.activity.admin
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.widget.AdapterView
+import android.widget.Spinner
+import android.widget.TextView
 import com.tapisdev.cateringtenda.base.BaseActivity
 import com.tapisdev.kangservice.R
 import com.tapisdev.kangservice.model.Perbaikan
 import com.tapisdev.kangservice.model.UserModel
 import kotlinx.android.synthetic.main.activity_detail_perbaikan.*
+import kotlinx.android.synthetic.main.activity_detail_perbaikan.tvAlamatAdmin
+import kotlinx.android.synthetic.main.activity_detail_perbaikan.tvNamaPemesan
+import kotlinx.android.synthetic.main.activity_detail_perbaikan.tvStatusAdmin
+import kotlinx.android.synthetic.main.activity_detail_perbaikan.tvTanggalAdmin
+import kotlinx.android.synthetic.main.activity_detail_perbaikan.tvTotalPriceAdmin
+import kotlinx.android.synthetic.main.activity_detail_perbaikan.tvUbahStatus
+import kotlinx.android.synthetic.main.activity_detail_transaksi_sparepart_admin.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -36,6 +48,9 @@ class DetailPerbaikanActivity : BaseActivity() {
 
         ivBackPerbaikan.setOnClickListener {
             onBackPressed()
+        }
+        tvUbahStatus.setOnClickListener {
+            showDialogUbahStatus()
         }
 
 
@@ -77,6 +92,67 @@ class DetailPerbaikanActivity : BaseActivity() {
             }else{
                 showErrorMessage("Pengguna tidak ditemukan")
                 Log.d(TAG_GET_USER,"err : "+task.exception)
+            }
+        }
+    }
+
+    fun showDialogUbahStatus(){
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dlg_ubah_status_pesan)
+        val spStatus  = dialog.findViewById(R.id.spStatus) as Spinner
+        val tvCancel = dialog.findViewById(R.id.tvCancel) as TextView
+        val tvAdd = dialog.findViewById(R.id.tvAdd) as TextView
+
+        spStatus.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                Log.d(TAG_UBAH_STATUS, "jenis nya "+ parent?.getItemAtPosition(position).toString())
+                var selected = parent?.getItemAtPosition(position).toString()
+                if (selected.equals("Pilih Status Pesanan")){
+                    selectedStatus = "none"
+                }else{
+                    selectedStatus = selected
+                }
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        })
+
+        tvCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+        tvAdd.setOnClickListener {
+            if(selectedStatus.equals("none")){
+                showErrorMessage("anda belum memilih status")
+            }else{
+                updateStatusPesanan(selectedStatus)
+                dialog.dismiss()
+            }
+        }
+
+        dialog.show()
+    }
+
+    fun updateStatusPesanan(newStatus : String){
+        showLoading(this)
+        perbaikanRef.document(perbaikan.perbaikanId.toString()).update("status",newStatus).addOnCompleteListener { task ->
+            dismissLoading()
+            if (task.isSuccessful){
+                perbaikan.status = newStatus
+                tvStatusAdmin.setText(perbaikan.status)
+                showSuccessMessage("Status berhasil diubah")
+                updateUI()
+                //onBackPressed()
+            }else{
+                showLongErrorMessage("terjadi kesalahan, coba lagi nanti")
+                Log.d(TAG_UBAH_STATUS,"err : "+task.exception)
             }
         }
     }

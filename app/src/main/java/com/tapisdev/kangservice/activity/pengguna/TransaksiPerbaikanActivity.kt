@@ -1,4 +1,4 @@
-package com.tapisdev.kangservice.activity.admin
+package com.tapisdev.kangservice.activity.pengguna
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,13 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tapisdev.cateringtenda.base.BaseActivity
 import com.tapisdev.kangservice.R
-import com.tapisdev.kangservice.adapter.AdapterLayanan
 import com.tapisdev.kangservice.adapter.AdapterPerbaikan
 import com.tapisdev.kangservice.model.Perbaikan
-import kotlinx.android.synthetic.main.activity_list_layanan.*
 import kotlinx.android.synthetic.main.activity_transaksi_perbaikan_admin.*
 
-class TransaksiPerbaikanAdminActivity : BaseActivity() {
+class TransaksiPerbaikanActivity : BaseActivity() {
 
     var TAG_GET = "getPerbaikan"
     lateinit var adapter: AdapterPerbaikan
@@ -24,7 +22,7 @@ class TransaksiPerbaikanAdminActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_transaksi_perbaikan_admin)
+        setContentView(R.layout.activity_transaksi_perbaikan)
 
         adapter = AdapterPerbaikan(listPerbaikan)
         rvPerbaikan.setHasFixedSize(true)
@@ -48,7 +46,6 @@ class TransaksiPerbaikanAdminActivity : BaseActivity() {
             adapter.notifyDataSetChanged()
         }
 
-
         getDataMyPerbaikan()
     }
 
@@ -60,7 +57,7 @@ class TransaksiPerbaikanAdminActivity : BaseActivity() {
                 //Log.d(TAG_GET_Sparepart, "Datanya : "+document.data)
                 var perbaikan : Perbaikan = document.toObject(Perbaikan::class.java)
                 perbaikan.perbaikanId = document.id
-                if (perbaikan.idAdmin.equals(auth.currentUser?.uid)){
+                if (perbaikan.idUser.equals(auth.currentUser?.uid)){
                     listPerbaikan.add(perbaikan)
                 }
             }

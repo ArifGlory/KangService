@@ -15,6 +15,7 @@ import com.tapisdev.kangservice.R
 import com.tapisdev.kangservice.activity.admin.DetailLayananActivity
 import com.tapisdev.kangservice.activity.admin.DetailPerbaikanActivity
 import com.tapisdev.kangservice.activity.admin.DetailSparepartActivity
+import com.tapisdev.kangservice.activity.pengguna.DetailPerbaikanUserActivity
 import com.tapisdev.kangservice.activity.pengguna.PesanlLayananPerbaikanActivity
 import com.tapisdev.kangservice.model.Layanan
 import com.tapisdev.kangservice.model.Perbaikan
@@ -56,9 +57,16 @@ class AdapterPerbaikan(private val list:ArrayList<Perbaikan>) : RecyclerView.Ada
 
         holder.view.linePerbaikan.setOnClickListener {
             Log.d("adapterIsi",""+list.get(position).toString())
-            val i = Intent(holder.view.linePerbaikan.context, DetailPerbaikanActivity::class.java)
-            i.putExtra("perbaikan",list.get(position) as Serializable)
-            holder.view.linePerbaikan.context.startActivity(i)
+            if (mUserPref.getJenisUser().equals("admin")){
+                val i = Intent(holder.view.linePerbaikan.context, DetailPerbaikanActivity::class.java)
+                i.putExtra("perbaikan",list.get(position) as Serializable)
+                holder.view.linePerbaikan.context.startActivity(i)
+            }else{
+                val i = Intent(holder.view.linePerbaikan.context, DetailPerbaikanUserActivity::class.java)
+                i.putExtra("perbaikan",list.get(position) as Serializable)
+                holder.view.linePerbaikan.context.startActivity(i)
+            }
+
         }
 
     }
