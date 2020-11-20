@@ -68,7 +68,7 @@ class DetailPerbaikanActivity : BaseActivity() {
         val df = nf as DecimalFormat
         tvTotalPriceAdmin.setText(perbaikan.namaLayanan+"\n Rp. "+df.format(perbaikan.harga))
 
-        if (perbaikan.status.equals("pesanan selesai")){
+        if (perbaikan.status.equals("Service selesai")){
             tvUbahStatus.visibility = View.INVISIBLE
             tvUbahStatus.isEnabled = false
         }
@@ -100,7 +100,7 @@ class DetailPerbaikanActivity : BaseActivity() {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
-        dialog.setContentView(R.layout.dlg_ubah_status_pesan)
+        dialog.setContentView(R.layout.dlg_ubah_status_service)
         val spStatus  = dialog.findViewById(R.id.spStatus) as Spinner
         val tvCancel = dialog.findViewById(R.id.tvCancel) as TextView
         val tvAdd = dialog.findViewById(R.id.tvAdd) as TextView
@@ -114,7 +114,7 @@ class DetailPerbaikanActivity : BaseActivity() {
             ) {
                 Log.d(TAG_UBAH_STATUS, "jenis nya "+ parent?.getItemAtPosition(position).toString())
                 var selected = parent?.getItemAtPosition(position).toString()
-                if (selected.equals("Pilih Status Pesanan")){
+                if (selected.equals("Pilih Status Service")){
                     selectedStatus = "none"
                 }else{
                     selectedStatus = selected

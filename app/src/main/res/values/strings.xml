@@ -15,4 +15,12 @@
         <item>pesanan selesai</item>
         <item>pesanan ditolak</item>
     </string-array>
+    <string-array name="listStatusService">
+        <item>Pilih Status Service</item>
+        <item>menunggu konfirmasi</item>
+        <item>Sedang di Proses</item>
+        <item>Service selesai</item>
+        <item>Service ditolak</item>
+    </string-array>
+    <string name="title_activity_maps_toko">Map</string>
 </resources>

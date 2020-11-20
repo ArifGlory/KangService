@@ -90,6 +90,16 @@ class DetailTokoActivity : BaseActivity() {
                 showErrorMessage("Terjadi kesalahan, coba lagi nanti")
             }
         }
+        tvLocation.setOnClickListener {
+            if (toko.latlon.equals("none") || toko.latlon.equals("")){
+                showInfoMessage("Toko ini belum memilih titik lokasinya")
+            }else{
+                val i = Intent(this,MapsTokoActivity::class.java)
+                i.putExtra("latlon",toko.latlon)
+                startActivity(i)
+            }
+
+        }
 
 
         updateUI()

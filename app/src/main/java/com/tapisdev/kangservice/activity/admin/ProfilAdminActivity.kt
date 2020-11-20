@@ -74,6 +74,13 @@ class ProfilAdminActivity : BaseActivity(),PermissionHelper.PermissionListener {
             startActivity(i)
         }
 
+        if (!mUserPref.getAlamat().equals("") || !mUserPref.getAlamat().equals("none")){
+            alamat = mUserPref.getAlamat()!!
+        }
+        if (!mUserPref.getLatlon().equals("") || !mUserPref.getLatlon().equals("none")){
+            latlon = mUserPref.getLatlon()!!
+        }
+
         updateUI()
     }
 
@@ -97,6 +104,7 @@ class ProfilAdminActivity : BaseActivity(),PermissionHelper.PermissionListener {
             userRef.document(auth.currentUser?.uid.toString()).update("name",getName)
             userRef.document(auth.currentUser?.uid.toString()).update("deskripsi",getDeskripsi)
             userRef.document(auth.currentUser?.uid.toString()).update("alamat",getAlamat)
+            userRef.document(auth.currentUser?.uid.toString()).update("latlon",latlon)
             userRef.document(auth.currentUser?.uid.toString()).update("phone",getMobileNumber).addOnCompleteListener { task ->
                 if (task.isSuccessful){
                     dismissLoading()
