@@ -18,10 +18,12 @@ import com.tapisdev.kangservice.activity.pengguna.BuktiBayarActivity
 import com.tapisdev.kangservice.adapter.AdapterDetailPesanan
 import com.tapisdev.kangservice.model.CartSparepart
 import com.tapisdev.kangservice.model.Pesanan
+import com.tapisdev.kangservice.model.Sparepart
 import com.tapisdev.kangservice.model.UserModel
 import kotlinx.android.synthetic.main.activity_detail_transaksi_sparepart.*
 import kotlinx.android.synthetic.main.activity_detail_transaksi_sparepart_admin.*
 import kotlinx.android.synthetic.main.activity_detail_transaksi_sparepart_admin.rvDetailPesanan
+import kotlinx.android.synthetic.main.activity_list_layanan.*
 import java.io.Serializable
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -41,6 +43,8 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
     var selectedStatus = "none"
     var TAG_GET_USER = "userGET"
     var TAG_UBAH_STATUS = "ubahStatus"
+    var checkKetersediaan = false
+    var iteratorCart = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +112,19 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
             if(selectedStatus.equals("none")){
                 showErrorMessage("anda belum memilih status")
             } else{
-                updateStatusPesanan(selectedStatus)
+                if (selectedStatus.equals("menunggu konfirmasi") || selectedStatus.equals("pesanan ditolak")){
+                    updateStatusPesanan(selectedStatus)
+                }else{
+                    //jika stok sparepart toko belum dikurangi
+                    if (pesanan.isStokCalculted == false){
+                        if (cekKetersedianStok()){
+                            //kurangi stok dan ubah status
+                        }else{
+                            //stok ga cukup
+                            showErrorMessage("Stok tidak mencukupi : "+listCart.get(iteratorCart).nama)
+                        }
+                    }
+                }
                 dialog.dismiss()
             }
         }
@@ -116,8 +132,35 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
         dialog.show()
     }
 
-    fun cekKetersedianStok(){
+    fun cekKetersedianStok() : Boolean{
+        var check  = false
+        for (iteratorCart in 0 until listCart.size){
+            var cart = listCart.get(iteratorCart)
 
+            sparepartRef.document(cart.idSparepart.toString()).get().addOnCompleteListener { task ->
+                if(task.isSuccessful){
+                    val document = task.result
+
+                    //convert doc to object
+                    var sparepart = document?.toObject(Sparepart::class.java)
+                    //check ketersediaan stok
+
+                    if (sparepart?.stok!! < cart.jumlah!!){
+                        check = false
+                        finish()
+                    }else{
+                        check = true
+                    }
+
+                }else{
+                    //klo ada yang kosong, langsung berenti
+                    check = false
+                    finish()
+                }
+            }
+        }
+
+        return check
     }
 
     fun updateStatusPesanan(newStatus : String){

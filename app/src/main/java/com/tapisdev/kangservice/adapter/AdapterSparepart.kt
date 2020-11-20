@@ -100,7 +100,8 @@ class AdapterSparepart(private val list:ArrayList<Sparepart>) : RecyclerView.Ada
                     list?.get(position)?.idAdmin,
                     auth.currentUser?.uid,
                     jml,
-                    ""
+                    "",
+                    list?.get(position)?.sparepartId
                 )
                 SharedVariable.listCart.add(cartSparepart)
                 SharedVariable.IdPenyediaCartSparepart = list.get(position).idAdmin.toString()
