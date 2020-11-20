@@ -14,5 +14,6 @@ data class CartSparepart(
     var idAdmin: String? = "",
     var idUser: String? = "",
     var jumlah: Int? = 0,
-    var idPesanan: String? = ""
+    var idPesanan: String? = "",
+    var idSparepart: String? = ""
 ) : Parcelable, java.io.Serializable

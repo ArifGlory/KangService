@@ -107,7 +107,7 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
         tvAdd.setOnClickListener {
             if(selectedStatus.equals("none")){
                 showErrorMessage("anda belum memilih status")
-            }else{
+            } else{
                 updateStatusPesanan(selectedStatus)
                 dialog.dismiss()
             }
@@ -116,8 +116,19 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
         dialog.show()
     }
 
+    fun cekKetersedianStok(){
+
+    }
+
     fun updateStatusPesanan(newStatus : String){
         showLoading(this)
+
+        //mengurangi stok sparepart
+        /*if (newStatus.equals("pesanan diproses")){
+            pesanan.isStokCalculted = true
+            pesanananRef.document(pesanan.pesananId.toString()).update("isStokCalculated",true)
+        }
+*/
         pesanananRef.document(pesanan.pesananId.toString()).update("status",newStatus).addOnCompleteListener { task ->
             dismissLoading()
             if (task.isSuccessful){
@@ -139,6 +150,9 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
         tvStatusAdmin.setText(pesanan.status)
 
         if (pesanan.status.equals("pesanan selesai")){
+            tvUbahStatus.visibility = View.INVISIBLE
+            tvUbahStatus.isEnabled = false
+        }else if (pesanan.status.equals("pesanan ditolak")){
             tvUbahStatus.visibility = View.INVISIBLE
             tvUbahStatus.isEnabled = false
         }
