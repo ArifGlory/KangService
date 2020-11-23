@@ -134,18 +134,18 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
 
     fun cekKetersedianStok() : Boolean{
         var check  = false
-        for (iteratorCart in 0 until listCart.size){
-            var cart = listCart.get(iteratorCart)
+        for (iterator in 0 until listCart.size){
+            var cart = listCart.get(iterator)
 
             sparepartRef.document(cart.idSparepart.toString()).get().addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     val document = task.result
-
                     //convert doc to object
                     var sparepart = document?.toObject(Sparepart::class.java)
-                    //check ketersediaan stok
 
+                    //check ketersediaan stok
                     if (sparepart?.stok!! < cart.jumlah!!){
+                        iteratorCart  = iterator
                         check = false
                         finish()
                     }else{
@@ -154,6 +154,7 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
 
                 }else{
                     //klo ada yang kosong, langsung berenti
+                    iteratorCart  = iterator
                     check = false
                     finish()
                 }
