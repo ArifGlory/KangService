@@ -113,16 +113,23 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
                 showErrorMessage("anda belum memilih status")
             } else{
                 if (selectedStatus.equals("menunggu konfirmasi") || selectedStatus.equals("pesanan ditolak")){
+                    showLoading(this)
                     updateStatusPesanan(selectedStatus)
                 }else{
                     //jika stok sparepart toko belum dikurangi
-                    if (pesanan.isStokCalculted == false){
-                        if (cekKetersedianStok()){
+                    showLoading(this)
+                    if (pesanan.stokCalculated == false){
+                        /*if (cekKetersedianStok()){
                             //kurangi stok dan ubah status
+                            kurangiStok()
                         }else{
                             //stok ga cukup
+                            dismissLoading()
                             showErrorMessage("Stok tidak mencukupi : "+listCart.get(iteratorCart).nama)
-                        }
+                        }*/
+                        cekKetersedianStok()
+                    }else{
+                        updateStatusPesanan(selectedStatus)
                     }
                 }
                 dialog.dismiss()
@@ -132,40 +139,142 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
         dialog.show()
     }
 
-    fun cekKetersedianStok() : Boolean{
+    fun kurangiStok(){
+        for (i in 0 until listCart.size){
+            var cart = listCart.get(i)
+
+            if (i != listCart.size -1){
+                //jika bukan yang terakhir
+                sparepartRef.document(cart.idSparepart.toString()).get().addOnCompleteListener {
+                        task ->
+                    if(task.isSuccessful){
+                        val document = task.result
+                        //convert doc to object
+                        var sparepart = document?.toObject(Sparepart::class.java)
+                        var newStok = sparepart?.stok!! - cart.jumlah!!
+
+                        //kurangi stoknya
+                        sparepartRef.document(cart.idSparepart.toString()).update("stok",newStok)
+
+                    }else{
+                        Log.d("kurangiStok","ada data sparepart eror :"+cart.nama)
+                    }
+                }
+            }else{
+                //jika yang terakhir
+
+                //update status stok sudah dikurangi
+                pesanananRef.document(pesanan.pesananId.toString()).update("stokCalculated",true)
+
+                sparepartRef.document(cart.idSparepart.toString()).get().addOnCompleteListener {
+                        task ->
+                    if(task.isSuccessful){
+                        val document = task.result
+                        //convert doc to object
+                        var sparepart = document?.toObject(Sparepart::class.java)
+                        var newStok = sparepart?.stok!! - cart.jumlah!!
+
+                        //kurangi stoknya
+                        sparepartRef.document(cart.idSparepart.toString()).update("stok",newStok).addOnCompleteListener {
+                            task ->
+                            if(task.isSuccessful){
+                                updateStatusPesanan(selectedStatus)
+                                //dismissLoading()
+                                showSuccessMessage("Ubah status berhasil, stok sparepart telah dikurangi")
+                            }else{
+                                dismissLoading()
+                                Log.d("kurangiStok","ada data sparepart eror :"+cart.nama)
+                            }
+                        }
+
+                    }else{
+                        Log.d("kurangiStok","ada data sparepart eror :"+cart.nama)
+                    }
+                }
+
+            }
+
+
+
+        }
+    }
+
+    fun cekKetersedianStok(){
         var check  = false
         for (iterator in 0 until listCart.size){
             var cart = listCart.get(iterator)
 
-            sparepartRef.document(cart.idSparepart.toString()).get().addOnCompleteListener { task ->
-                if(task.isSuccessful){
-                    val document = task.result
-                    //convert doc to object
-                    var sparepart = document?.toObject(Sparepart::class.java)
+            if (iterator != listCart.size - 1 ){
+                sparepartRef.document(cart.idSparepart.toString()).get().addOnCompleteListener { task ->
+                    if(task.isSuccessful){
+                        val document = task.result
+                        //convert doc to object
+                        var sparepart = document?.toObject(Sparepart::class.java)
 
-                    //check ketersediaan stok
-                    if (sparepart?.stok!! < cart.jumlah!!){
+                        //check ketersediaan stok
+                        if (sparepart?.stok!! < cart.jumlah!!){
+                            iteratorCart  = iterator
+                            check = false
+                            finish()
+
+                            dismissLoading()
+                            showErrorMessage("Stok tidak mencukupi : "+listCart.get(iteratorCart).nama)
+
+                        }else{
+                            check = true
+                        }
+
+                    }else{
+                        //klo ada yang kosong, langsung berenti
                         iteratorCart  = iterator
                         check = false
                         finish()
-                    }else{
-                        check = true
-                    }
 
-                }else{
-                    //klo ada yang kosong, langsung berenti
-                    iteratorCart  = iterator
-                    check = false
-                    finish()
+                        dismissLoading()
+                        showErrorMessage("Stok tidak mencukupi : "+listCart.get(iteratorCart).nama)
+                    }
+                }
+            }else{
+                sparepartRef.document(cart.idSparepart.toString()).get().addOnCompleteListener { task ->
+                    if(task.isSuccessful){
+                        val document = task.result
+                        //convert doc to object
+                        var sparepart = document?.toObject(Sparepart::class.java)
+
+                        //check ketersediaan stok
+                        if (sparepart?.stok!! < cart.jumlah!!){
+                            iteratorCart  = iterator
+                            check = false
+                            finish()
+
+                            dismissLoading()
+                            showErrorMessage("Stok tidak mencukupi : "+listCart.get(iteratorCart).nama)
+
+                        }else{
+                            check = true
+                            kurangiStok()
+                        }
+
+                    }else{
+                        //klo ada yang kosong, langsung berenti
+                        iteratorCart  = iterator
+                        check = false
+                        finish()
+
+                        dismissLoading()
+                        showErrorMessage("Stok tidak mencukupi : "+listCart.get(iteratorCart).nama)
+                    }
                 }
             }
+
+
+
         }
 
-        return check
     }
 
     fun updateStatusPesanan(newStatus : String){
-        showLoading(this)
+        //showLoading(this)
 
         //mengurangi stok sparepart
         /*if (newStatus.equals("pesanan diproses")){
@@ -233,7 +342,9 @@ class DetailTransaksiSparepartAdminActivity : BaseActivity() {
                 //Log.d(TAG_GET_CATERING, "Datanya : "+document.data)
                 var cart : CartSparepart = document.toObject(CartSparepart::class.java)
                 if (cart.idAdmin.equals(auth.currentUser?.uid) && cart.idUser.equals(pesanan.idUser)){
-                    listCart.add(cart)
+                    if (cart.idPesanan.equals(pesanan.pesananId)){
+                        listCart.add(cart)
+                    }
                 }
             }
             countTotalPrice()

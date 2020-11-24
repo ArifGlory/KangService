@@ -125,8 +125,37 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/cvFoodName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp"
+            android:id="@+id/cvCariSparepart"
+            >
+
+            <EditText
+                android:id="@+id/edSearchSparepartDetailToko"
+                android:layout_below="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:background="@drawable/bg_corner_white_10"
+                android:hint="Cari sparepart"
+                android:inputType="text"
+                android:imeOptions="actionGo"
+                android:paddingLeft="10sp"
+                android:maxLines="1"
+                android:paddingRight="10sp"
+                android:textSize="14sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cvCariSparepart"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
@@ -149,6 +178,7 @@
                     android:layout_marginRight="5dp"
                     android:textStyle="bold"
                     tools:ignore="MissingPrefix" />
+
 
                 <RelativeLayout
                     android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -99,6 +100,23 @@ class DetailTokoActivity : BaseActivity() {
                 startActivity(i)
             }
 
+        }
+        edSearchSparepartDetailToko.doOnTextChanged { text, start, before, count ->
+            var query = text.toString().toLowerCase().trim()
+            var listSearchSparepart = ArrayList<Sparepart>()
+
+            for (c in 0 until listSparepart.size){
+                var namaSparepart = listSparepart.get(c).nama.toString().toLowerCase().trim()
+                if (namaSparepart.contains(query)){
+                    listSearchSparepart.add(listSparepart.get(c))
+                }
+            }
+            Log.d("search"," "+query)
+
+            adapter = AdapterSparepart(listSearchSparepart)
+            rvSparepart.layoutManager = LinearLayoutManager(this)
+            rvSparepart.adapter = adapter
+            adapter.notifyDataSetChanged()
         }
 
 

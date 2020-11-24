@@ -14,5 +14,5 @@ data class Pesanan(
     var tanggalPesan: String? = "",
     var buktiBayar: String? = "",
     var status: String? = "",
-    var isStokCalculted: Boolean? = false
+    var stokCalculated: Boolean? = false
 ) : Parcelable, java.io.Serializable
