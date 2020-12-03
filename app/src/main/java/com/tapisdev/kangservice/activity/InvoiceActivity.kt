@@ -1,9 +1,11 @@
 package com.tapisdev.kangservice.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tapisdev.cateringtenda.base.BaseActivity
@@ -12,11 +14,14 @@ import com.tapisdev.kangservice.adapter.AdapterDetailPesanan
 import com.tapisdev.kangservice.model.CartSparepart
 import com.tapisdev.kangservice.model.Pesanan
 import com.tapisdev.kangservice.model.UserModel
-import kotlinx.android.synthetic.main.activity_detail_transaksi_sparepart.*
 import kotlinx.android.synthetic.main.activity_invoice.*
+import java.io.File
+import java.io.FileOutputStream
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.*
+
 
 class InvoiceActivity : BaseActivity() {
 
@@ -37,6 +42,8 @@ class InvoiceActivity : BaseActivity() {
         i = intent
         pesanan = i.getSerializableExtra("pesanan") as Pesanan
         Log.d("pesanan"," id : "+pesanan.pesananId)
+
+        val rootView = window.decorView.findViewById<View>(R.id.rootView)
 
         adapter = AdapterDetailPesanan(listCart)
         rvDetailPesananInvoice.setHasFixedSize(true)
@@ -131,6 +138,15 @@ class InvoiceActivity : BaseActivity() {
             }
         }
         tvTotalPriceInvoice.setText("Rp. "+df.format(totalPrice))
+    }
+
+    fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
+    }
+
+    fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
     }
 
 }
